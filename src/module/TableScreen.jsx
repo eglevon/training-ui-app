@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
@@ -8,11 +9,50 @@ export function TableScreen(props) {
     const { t } = useTranslation();
 
     const columns = [
-        { title: 'Username', render: ({ row }) => <span>{row.username}</span> },
-        { title: 'Email', render: ({ row }) => <span>{row.email}</span> },
-        { title: 'Created', render: ({ row }) => <DateTime value={row.created} /> },
-        { title: 'Last Sign In', render: ({ row }) => <DateTime value={row.last_sign_in} /> },
-        { title: 'Address', render: ({ row }) => <span>{row.address}</span> },
+        {
+            title: (
+                <>
+                    <i className='bi bi-person'></i> Username
+                </>
+            ),
+            render: ({ row }) => (
+                <Link to={`/detail/${row.id}`} title={row.id}>
+                    {row.username}
+                </Link>
+            ),
+        },
+        {
+            title: (
+                <>
+                    <i class='bi bi-envelope'></i> Email
+                </>
+            ),
+            render: ({ row }) => <span>{row.email}</span>,
+        },
+        {
+            title: (
+                <>
+                    <i class='bi bi-calendar-event'></i> Created
+                </>
+            ),
+            render: ({ row }) => <DateTime value={row.created} />,
+        },
+        {
+            title: (
+                <>
+                    <i class='bi bi-clock'></i> Last Sign In
+                </>
+            ),
+            render: ({ row }) => <DateTime value={row.last_sign_in} />,
+        },
+        {
+            title: (
+                <>
+                    <i class='bi bi-house'></i> Address
+                </>
+            ),
+            render: ({ row }) => <span>{row.address}</span>,
+        },
     ];
 
     const loader = async ({ params }) => {
