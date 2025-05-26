@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { Container } from 'reactstrap';
 import { DataTableCard2, DateTime } from 'asab_webui_components';
 
 export function TableScreen(props) {
@@ -12,7 +12,7 @@ export function TableScreen(props) {
         {
             title: (
                 <>
-                    <i className='bi bi-person'></i> Username
+                    <i className='bi bi-person'></i> {t('User|Username')}
                 </>
             ),
             render: ({ row }) => (
@@ -24,7 +24,7 @@ export function TableScreen(props) {
         {
             title: (
                 <>
-                    <i class='bi bi-envelope'></i> Email
+                    <i className='bi bi-envelope'></i> {t('User|Email')}
                 </>
             ),
             render: ({ row }) => <span>{row.email}</span>,
@@ -32,7 +32,7 @@ export function TableScreen(props) {
         {
             title: (
                 <>
-                    <i class='bi bi-calendar-event'></i> Created
+                    <i className='bi bi-calendar-event'></i> {t('User|Created')}
                 </>
             ),
             render: ({ row }) => <DateTime value={row.created} />,
@@ -40,7 +40,7 @@ export function TableScreen(props) {
         {
             title: (
                 <>
-                    <i class='bi bi-clock'></i> Last Sign In
+                    <i className='bi bi-clock'></i> {t('User|Last Sign In')}
                 </>
             ),
             render: ({ row }) => <DateTime value={row.last_sign_in} />,
@@ -48,7 +48,7 @@ export function TableScreen(props) {
         {
             title: (
                 <>
-                    <i class='bi bi-house'></i> Address
+                    <i className='bi bi-house'></i> {t('User|Address')}
                 </>
             ),
             render: ({ row }) => <span>{row.address}</span>,
@@ -64,7 +64,7 @@ export function TableScreen(props) {
 
     return (
         <Container className='h-100'>
-            <DataTableCard2 columns={columns} loader={loader} header={<h1>Table</h1>} />
+            <DataTableCard2 columns={columns} loader={loader} />
         </Container>
     );
 }
